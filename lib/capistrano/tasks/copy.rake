@@ -33,7 +33,7 @@ namespace :copy do
       execute :rm, tmp_file
     end
 
-    Rake::Task["copy:clean"].invoke
+    # Rake::Task["copy:clean"].invoke
   end
 
   task :clean do |t|
@@ -44,5 +44,6 @@ namespace :copy do
   task :create_release => :deploy
   task :check
   task :set_current_revision
+  after 'deploy:finished', 'copy:clean'
 
 end
